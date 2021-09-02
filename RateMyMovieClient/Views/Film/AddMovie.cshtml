@@ -1,0 +1,36 @@
+﻿@model RateMyMovieClient.Models.MovieSet
+@{
+    ViewData["Title"] = "AddMovie";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="jumbotron">
+    <form asp-action="createMovie" asp-controller="Film">
+        <fieldset>
+            <legend>Ajouter un film</legend>
+            <div class="form-group">
+                <label for="afficheFilm">Affiche</label>
+                <input asp-for="Image" accept="image/*" type="file" class="form-control-file" id="afficheFilm" aria-describedby="afficheHelp">
+            </div>
+            <div class="form-group" data-children-count="1">
+                <label for="titleFilm">Titre</label>
+                <input asp-for="Title" type="text" class="form-control" id="titleFilm" aria-describedby="titleHelp" placeholder="Remplisser le titre du film" data-kwimpalastatus="alive" data-kwimpalaid="1612954762222-2">
+            </div>
+            <div class="form-group" data-children-count="1">
+                <label for="titleSynopsis">Synopsis</label>
+                <textarea asp-for="Synopsis" class="form-control" id="titleSynopsis" rows="3"></textarea>
+            </div>
+
+            <div class="form-group" data-children-count="1">
+                <label for="genreFilm">Genre</label>
+                <select class="form-control" id="genreFilm">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
+        </fieldset>
+    </form>
+</div>

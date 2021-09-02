@@ -1,0 +1,31 @@
+﻿@model IEnumerable<RateMyMovieClient.Models.MovieSet>
+@{
+    ViewData["Title"] = "Home page";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+        <div class="card" style="width: 18rem;margin:10px;">
+            <img class="card-img-top" src="..." alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                <hr />
+                <p class="card-text">@Html.DisplayFor(modelItem => item.Synopsis)</p>
+                <hr />
+            </div>
+            <ul class="list-group list-group-flush">
+                @foreach (var genre in item.GenreMovies)
+                {
+                    <li class="list-group-item">@Html.DisplayFor(modelGenre => genre.Genre.Name)</li>
+                }
+            </ul>
+            <hr />
+            <div class="card-body">
+                <input type="button" class="btn-block btn-primary" value="Voir" onclick="@("window.location.href='" + @Url.Action("index", "film",new {id = item.Id}) + "'");" />
+            </div>
+        </div>
+        }
+        </div>
+    </div>

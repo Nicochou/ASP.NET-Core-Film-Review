@@ -1,0 +1,16 @@
+﻿@model RateMyMovieClient.Models.UserSet
+@{
+    ViewData["Title"] = "Login";
+}
+<h1>@ViewData["Title"]</h1>
+<form asp-action="LoginUser" asp-controller="Auth">
+    <div class="form-group">
+        <label for="Username">Username</label>
+        <input asp-for="Username" type="text" class="form-control" id="UsernameInput" aria-describedby="usernameHelp" placeholder="Enter username">
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        <input asp-for="Password" type="password" class="form-control" id="PasswordInput" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>

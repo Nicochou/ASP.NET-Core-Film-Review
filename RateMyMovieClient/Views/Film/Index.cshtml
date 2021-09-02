@@ -1,0 +1,74 @@
+﻿@model RateMyMovieClient.Models.MovieSet
+@{
+    ViewData["Title"] = "Film";
+}
+<h1>@ViewData["Title"]</h1>
+<div class="jumbotron">
+    <h1 class="display-3">@Html.DisplayFor(modelItem => Model.Title)</h1>
+    <p class="lead">@Html.DisplayFor(modelItem => Model.Synopsis)</p>
+    <hr class="my-4">
+    <ul class="list-group">
+        @foreach (var item in Model.GenreMovies)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                @Html.DisplayFor(modelItem => item.Genre.Name)
+            </li>
+        }
+    </ul>
+    <hr class="my-4">
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </p>
+</div>
+<hr />
+<h2>Commentaires</h2>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Utilisateur</th>
+            <th scope="col">Commentaire</th>
+            <th scope="col">Nombre de like</th>
+            <th scope="col">Note</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model.CommentSets)
+            {
+            <tr class="table-Light">
+                <th scope="row">@Html.DisplayFor(modelItem => item.User.Username)</th>
+                <td>@Html.DisplayFor(modelItem => item.Message)</td>
+                <td>@Html.DisplayFor(modelItem => item.Like)</td>
+                <td>@Html.DisplayFor(modelItem => item.Value) / 5</td>
+            </tr>
+            }
+    </tbody>
+</table>
+<hr />
+<h2>Add Commentaire</h2>
+<div class="jumbotron">
+    <form>
+        <fieldset>
+            <div class="row">
+                <div class="form-group col-sm-8" data-children-count="1">
+                    <label for="exampleTextarea">Commentaire</label>
+                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                </div>
+                <div class="form-group col-sm-4" data-children-count="1">
+                    <label for="exampleSelect2">Note</label>
+                    <select multiple="" class="form-control" id="exampleSelect2">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row align-items-end">
+                <div class="form-group col-sm-2">
+                    <input type="submit" class="btn btn-primary" />
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
